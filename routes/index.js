@@ -5,12 +5,16 @@ var router = express.Router();
 const post_controller = require('../controllers/postController');
 const user_controller = require('../controllers/userController');
 
-//Will be able to view without signing in.
+//home page
 router.get('/', post_controller.posts);
 
-router.get('/sign-up', user_controller.signup);
+//sign-up page
+router.get('/sign-up', user_controller.signup_get);
+router.post('/sign-up', user_controller.signup_post);
 
-router.get('/login', user_controller.login);
+//login page
+router.get('/login', user_controller.login_get);
+router.post('/login', user_controller.login_post);
 
 //After login
 router.get('/membership');
