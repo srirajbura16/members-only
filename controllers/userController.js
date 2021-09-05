@@ -4,10 +4,14 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 exports.login_get = (req, res) => {
-  res.send('NOT IMPLEMENTED: login page GET');
+  res.render('login');
 };
+
 exports.login_post = (req, res) => {
-  res.send('NOT IMPLEMENTED: login page POST');
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/',
+  });
 };
 
 exports.signup_get = (req, res) => {

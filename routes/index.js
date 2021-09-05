@@ -17,8 +17,7 @@ router.get('/login', user_controller.login_get);
 router.post('/login', user_controller.login_post);
 
 //After login
-router.get('/membership');
-
-router.get('/adminaccess');
+// router.get('/membership');
+// router.get('/adminaccess');
 
 module.exports = router;
