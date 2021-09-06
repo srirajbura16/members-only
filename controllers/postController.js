@@ -7,6 +7,7 @@ exports.posts = (req, res) => {
 exports.create_post_get = (req, res) => {
   res.render('post');
 };
+
 exports.create_post_post = (req, res) => {
   res.render('index', { user: req.user });
 };

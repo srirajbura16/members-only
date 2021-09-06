@@ -1,6 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+//helpers
+const CheckUserLogin = (req, res, next) => {
+  if (req.user) {
+    return next();
+  }
+
+  res.redirect('/login');
+};
+
 //Controller Modules
 const post_controller = require('../controllers/postController');
 const user_controller = require('../controllers/userController');
@@ -18,16 +27,16 @@ router.post('/login', user_controller.login_post);
 router.get('/logout', user_controller.logout_post);
 
 //After login
-
 //post
-router.get('/post', post_controller.create_post_get);
+router.get('/post', CheckUserLogin, post_controller.create_post_get);
+router.post('/post', post_controller.create_post_post);
 
 //member
-router.get('/membership', user_controller.membership_get);
+router.get('/membership', CheckUserLogin, user_controller.membership_get);
 router.post('/membership');
 
 //admin
-router.get('/admin', user_controller.admin_get);
+router.get('/admin', CheckUserLogin, user_controller.admin_get);
 router.post('/admin');
 
 module.exports = router;
