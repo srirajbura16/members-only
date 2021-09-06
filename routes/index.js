@@ -12,13 +12,18 @@ router.get('/', post_controller.posts);
 router.get('/sign-up', user_controller.signup_get);
 router.post('/sign-up', user_controller.signup_post);
 
-//login logout page
+//login logout
 router.get('/login', user_controller.login_get);
 router.post('/login', user_controller.login_post);
 router.get('/logout', user_controller.logout_post);
 
 //After login
-// router.get('/membership');
-// router.get('/adminaccess');
+//member
+router.get('/membership', user_controller.membership_get);
+router.post('/membership');
+
+//admin
+router.get('/admin', user_controller.admin_get);
+router.post('/admin');
 
 module.exports = router;

@@ -1,5 +1,9 @@
-extends layout
+extends layout 
 
 block content
-  h1= title
-  p Welcome to #{title}
+  if currentUser 
+    h3 Hello, #{currentUser.username}
+    
+  //dispay every post from evey user.
+  //if they're are not a memeber, mask user names. else show them
+  //

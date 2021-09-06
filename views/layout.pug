@@ -9,11 +9,18 @@ html
   body
     nav.nav
       div.logo 
-        a(href="/") Members-Only 
-      if  currentUser
-        div 
-          a(href="/logout") Logout
-      else
-        div 
-          a(href="/login") Login
+        a(href="/") Members-Only
+      .links
+        if currentUser
+          div 
+            a(href="/logout") Logout
+          if !currentUser.memeber
+            div 
+              a(href="/membership") Become a Member
+          if !currentUser.admin 
+            div 
+              a(href="/admin") Become an Admin
+        else
+          div 
+            a(href="/login") Login
     block content

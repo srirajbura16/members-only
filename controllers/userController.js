@@ -43,3 +43,19 @@ exports.signup_post = (req, res) => {
     });
   });
 };
+
+//Membership access
+exports.membership_get = (req, res) => {
+  res.render('membership');
+};
+exports.membership_post = (req, res) => {
+  res.render('sign-up');
+};
+
+//Admin Access
+exports.admin_get = (req, res) => {
+  res.render('admin');
+};
+exports.admin_post = (req, res) => {
+  res.render('sign-up');
+};

@@ -1,5 +1,5 @@
 const Post = require('../models/post');
 
 exports.posts = (req, res) => {
-  res.render('home', { user: req.user });
+  res.render('index', { user: req.user });
 };

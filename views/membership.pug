@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+ h1 Membership Access 
+
+  form(method='POST' action="")
+    div.form-group
+      input#name.form-control(type='text', name='username' placeholder="Code" required)
+    button.btn.btn-primary(type='submit') Submit
