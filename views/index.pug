@@ -3,6 +3,17 @@ extends layout
 block content
   if currentUser 
     h3 Hello, #{currentUser.username}
+  
+  each post in posts
+    div.post
+      div.post-info
+        span Posted by 
+        span=post.user.username
+        span  | 
+        span=post.timestamp
+      h4.title=post.title
+      p=post.message
+
     
   //dispay every post from evey user.
   //if they're are not a memeber, mask user names. else show them

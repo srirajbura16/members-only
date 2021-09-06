@@ -1,7 +1,15 @@
 const Post = require('../models/post');
 
 exports.posts = (req, res, next) => {
-  res.render('index', { user: req.user });
+  Post.find()
+    .populate('user')
+    .exec((err, posts) => {
+      if (err) {
+        return next(err);
+      }
+
+      res.render('index', { posts: posts });
+    });
 };
 
 exports.post_create_get = (req, res, next) => {

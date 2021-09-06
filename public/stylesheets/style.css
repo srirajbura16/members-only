@@ -1,5 +1,6 @@
 body {
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  background-color: #dae0e6;
 }
 
 a {
@@ -23,4 +24,20 @@ a {
   max-width: 900px;
   padding: 0 3rem;
   margin: 2rem auto;
+}
+
+/* HOME PAGE */
+.post {
+  background-color: white;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.post:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.post .title {
+  font-weight: bold;
 }
