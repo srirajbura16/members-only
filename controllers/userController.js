@@ -3,6 +3,7 @@ const User = require('../models/user');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
+// Login User
 exports.login_get = (req, res) => {
   res.render('login');
 };
@@ -11,9 +12,15 @@ exports.login_post = (req, res) => {
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/',
-  });
+  })(req, res);
 };
 
+exports.logout_post = (req, res) => {
+  req.logout();
+  res.redirect('/');
+};
+
+//Sign up User
 exports.signup_get = (req, res) => {
   res.render('sign-up');
 };

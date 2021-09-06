@@ -1,3 +1,5 @@
 extends layout 
 
-block content 
+block content
+  if currentUser 
+    h3 Hello, #{currentUser.username}
