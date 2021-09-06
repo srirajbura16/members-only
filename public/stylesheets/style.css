@@ -13,3 +13,8 @@ a {
   justify-content: space-around;
   padding: 3rem;
 }
+
+.block-content {
+  max-width: 900px;
+  margin: 2rem auto;
+}

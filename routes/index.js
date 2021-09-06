@@ -18,6 +18,10 @@ router.post('/login', user_controller.login_post);
 router.get('/logout', user_controller.logout_post);
 
 //After login
+
+//post
+router.get('/post', post_controller.create_post_get);
+
 //member
 router.get('/membership', user_controller.membership_get);
 router.post('/membership');

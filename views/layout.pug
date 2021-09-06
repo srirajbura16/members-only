@@ -14,6 +14,8 @@ html
         if currentUser
           div 
             a(href="/logout") Logout
+          div 
+            a(href="/post") POST
           if !currentUser.memeber
             div 
               a(href="/membership") Become a Member
@@ -23,4 +25,5 @@ html
         else
           div 
             a(href="/login") Login
-    block content
+    .block-content 
+      block content
