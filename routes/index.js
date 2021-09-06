@@ -28,8 +28,8 @@ router.get('/logout', user_controller.logout_post);
 
 //After login
 //post
-router.get('/post', CheckUserLogin, post_controller.create_post_get);
-router.post('/post', post_controller.create_post_post);
+router.get('/post', CheckUserLogin, post_controller.post_create_get);
+router.post('/post', post_controller.post_create_post);
 
 //member
 router.get('/membership', CheckUserLogin, user_controller.membership_get);

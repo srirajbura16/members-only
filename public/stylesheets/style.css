@@ -8,10 +8,15 @@ a {
 
 .nav {
   background-color: black;
-  color: white;
   display: flex;
-  justify-content: space-around;
-  padding: 3rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 6rem;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none !important;
 }
 
 .block-content {
