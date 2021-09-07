@@ -7,6 +7,8 @@ block content
     form(method='POST' action="")
       div.form-group
         input#name.form-control(type='text', name='code' placeholder="Code" required)
+      h4.text-success=successMsg
       button.btn.btn-primary(type='submit') Submit
   else 
-    h2.text-success You're an Admin now!
+    h3.text-success You're already an Admin!
+    h4 With Admin Access, you have the ability to delete posts.

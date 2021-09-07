@@ -3,11 +3,12 @@ extends layout
 block content 
   h1 Membership Access
 
-  if !currentUser.membership_status
+  if !currentUser.member
     form(method='POST' action="")
       div.form-group
         input#name.form-control(type='text', name='code' placeholder="Code" required)
-      div.text-success=successMsg
+      h4.text-success=successMsg
       button.btn.btn-primary(type='submit') Submit
   else 
-    h2.text-success You're a Member now!
+    h2.text-success You're already a member!
+    h4 With Membership access, you can view user's names

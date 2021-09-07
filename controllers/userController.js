@@ -59,7 +59,7 @@ exports.membership_post = (req, res) => {
   } else {
     //change user status to member
     //display success message.
-    User.findByIdAndUpdate(user._id, { member: true }, (err, result) => {
+    User.findByIdAndUpdate(user._id, { member: true }, (err) => {
       console.log(result);
       if (err) {
         return next(err);
@@ -74,5 +74,17 @@ exports.admin_get = (req, res) => {
   res.render('admin');
 };
 exports.admin_post = (req, res) => {
-  res.render('sign-up');
+  const user = req.user;
+  if (req.body.code !== process.env.admin_code) {
+    res.render('admin', { error: 'Wrong code, please try again.' });
+  } else {
+    //change user status to admin
+    //display success message.
+    User.findByIdAndUpdate(user._id, { admin: true }, (err) => {
+      if (err) {
+        return next(err);
+      }
+      res.render('admin', { successMsg: "You're an Admin now!" });
+    });
+  }
 };
