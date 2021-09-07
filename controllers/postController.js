@@ -8,7 +8,7 @@ exports.posts = (req, res, next) => {
         return next(err);
       }
 
-      res.render('index', { posts: posts });
+      res.render('index', { posts: posts, user: req.user });
     });
 };
 

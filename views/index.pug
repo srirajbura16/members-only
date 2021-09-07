@@ -8,13 +8,15 @@ block content
     div.post
       div.post-info
         span Posted by 
-        span=post.user.username
+        if !currentUser
+          span
+            a(href="/membership") Anonymous
+        else if currentUser.membership_status 
+          span=post.user.username
+        else
+          span
+            a(href="/membership") Anonymous
         span  | 
         span=post.timestamp
       h4.title=post.title
       p=post.message
-
-    
-  //dispay every post from evey user.
-  //if they're are not a memeber, mask user names. else show them
-  //

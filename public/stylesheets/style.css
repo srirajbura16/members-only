@@ -20,6 +20,10 @@ a {
   text-decoration: none !important;
 }
 
+.form-group {
+  margin-top: 1rem;
+}
+
 .block-content {
   max-width: 900px;
   padding: 0 3rem;

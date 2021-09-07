@@ -1,9 +1,12 @@
 extends layout 
 
 block content 
- h1 Membership Access 
+  h1 Membership Access
 
-  form(method='POST' action="")
-    div.form-group
-      input#name.form-control(type='text', name='username' placeholder="Code" required)
-    button.btn.btn-primary(type='submit') Submit
+  if !currentUser.membership_status
+    form(method='POST' action="")
+      div.form-group
+        input#name.form-control(type='text', name='code' placeholder="Code" required)
+      button.btn.btn-primary(type='submit') Submit
+  else 
+    h2.text-success You're a Member now!

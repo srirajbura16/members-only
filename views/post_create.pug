@@ -5,10 +5,10 @@ block content
   form(method='POST' action="")
     div.form-group
       label(for='title') Title:
-      input#name.form-control(type='text', name='title' required)
+      input#name.form-control(type='text', name='title', required)
       br
       label(for='message') Message:
-      textarea#name.form-control(type='text', name='message', row="3", required)
+      textarea#name.form-control(type='text', name='message', rows="4", col="5" required)
     button.btn.btn-primary(type='submit') Submit
 
   if errors

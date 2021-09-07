@@ -33,10 +33,10 @@ router.post('/post', post_controller.post_create_post);
 
 //member
 router.get('/membership', CheckUserLogin, user_controller.membership_get);
-router.post('/membership');
+router.post('/membership', CheckUserLogin, user_controller.membership_post);
 
 //admin
 router.get('/admin', CheckUserLogin, user_controller.admin_get);
-router.post('/admin');
+router.post('/admin', CheckUserLogin, user_controller.admin_post);
 
 module.exports = router;
