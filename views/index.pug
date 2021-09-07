@@ -11,7 +11,7 @@ block content
         if !currentUser
           span
             a(href="/membership") Anonymous
-        else if currentUser.membership_status 
+        else if currentUser.member 
           span=post.user.username
         else
           span

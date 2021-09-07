@@ -52,7 +52,22 @@ exports.membership_get = (req, res) => {
   res.render('membership');
 };
 
-exports.membership_post = (req, res) => {};
+exports.membership_post = (req, res) => {
+  const user = req.user;
+  if (req.body.code !== process.env.member_code) {
+    res.render('membership', { error: 'Wrong code, please try again.' });
+  } else {
+    //change user status to member
+    //display success message.
+    User.findByIdAndUpdate(user._id, { member: true }, (err, result) => {
+      console.log(result);
+      if (err) {
+        return next(err);
+      }
+      res.render('membership', { successMsg: "You're a member now!" });
+    });
+  }
+};
 
 //Admin Access
 exports.admin_get = (req, res) => {
