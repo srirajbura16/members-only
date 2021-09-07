@@ -9,6 +9,10 @@ block content
       br
       label(for='password') Password:
       input#name.form-control(type='text', name='password' required)
+      br
+      if successMsg
+        span.text-success #{successMsg} 
+          a(href='/login') Log-in here
     button.btn.btn-primary(type='submit') Sign Up
 
   if errors

@@ -39,7 +39,10 @@ exports.signup_post = (req, res) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/');
+      // res.redirect('/');
+      res.render('sign-up', {
+        successMsg: 'Signed up sucessfully.',
+      });
     });
   });
 };
@@ -48,9 +51,8 @@ exports.signup_post = (req, res) => {
 exports.membership_get = (req, res) => {
   res.render('membership');
 };
-exports.membership_post = (req, res) => {
-  res.render('sign-up');
-};
+
+exports.membership_post = (req, res) => {};
 
 //Admin Access
 exports.admin_get = (req, res) => {
