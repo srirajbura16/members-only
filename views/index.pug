@@ -7,7 +7,7 @@ block content
   each post in posts
     div.post
       div.post-info
-        span Posted by 
+        span Posted #{formatDistanceToNow(post.timestamp, { addSuffix: true })} by 
         if !currentUser
           span
             a(href="/membership") Anonymous
@@ -16,7 +16,6 @@ block content
         else
           span
             a(href="/membership") Anonymous
-        span  | 
-        span=post.timestamp
+
       h4.title=post.title
-      p=post.message
+      p.message=post.message

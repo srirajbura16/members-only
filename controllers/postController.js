@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const formatDistanceToNow = require('date-fns/formatDistanceToNow');
 
 exports.posts = (req, res, next) => {
   Post.find()
@@ -8,7 +9,7 @@ exports.posts = (req, res, next) => {
         return next(err);
       }
 
-      res.render('index', { posts: posts });
+      res.render('index', { posts: posts, formatDistanceToNow });
     });
 };
 
