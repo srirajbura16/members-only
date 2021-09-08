@@ -10,6 +10,8 @@ block content
       label(for='password') Password:
       input#name.form-control(type='text', name='password' required)
       br
+      label(for='confirm-password') Confirm Password:
+      input#name.form-control(type='text', name='confirm-password' required)
       if successMsg
         span.text-success #{successMsg} 
           a(href='/login') Log-in here
