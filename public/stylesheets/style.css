@@ -46,6 +46,11 @@ a {
   font-weight: bold;
 }
 
+/* ERROR MESSAGES */
+.errors {
+  margin-top: 1rem;
+}
+
 /* FOOTER */
 footer {
   display: -webkit-box;

@@ -16,8 +16,8 @@ block content
         span.text-success #{successMsg} 
           a(href='/login') Log-in here
     button.btn.btn-primary(type='submit') Sign Up
-
+  
   if errors
-   ul
+   ul.errors
     for error in errors
-     li!= error.msg
+     li.text-danger!= error.msg

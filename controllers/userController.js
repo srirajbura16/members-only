@@ -14,6 +14,15 @@ const checkAuthentication = (req, res, next) => {
   }
 };
 
+const usernameTaken = (username) => {
+  return User.findOne({ username: username }, (err, user) => {
+    if (user) {
+      return true;
+    }
+
+    return false;
+  });
+};
 // Login User
 exports.login_get = (req, res) => {
   res.render('login');
@@ -41,31 +50,43 @@ exports.signup_post = [
   (req, res, next) => {
     const errors = validationResult(req);
     console.log(errors);
+    console.log(validationResult(req));
+    console.log(req.body.username);
+
+    if (usernameTaken(req.body.username)) {
+      // res.render('sign-up', {
+      //   errors: [{ msg: `${req.body.username} is already taken taken.` }],
+      // });
+      errors.errors.unshift({
+        msg: `${req.body.username} is already taken taken.`,
+      });
+      console.log(errors.errors);
+    }
 
     if (!errors.isEmpty()) {
       res.render('sign-up', { errors: errors.array() });
       return;
-    } else {
-      bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-        // if err, do something
+    }
+
+    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+      // if err, do something
+      if (err) {
+        return next(err);
+      }
+      // otherwise, store hashedPassword in DB
+      new User({
+        username: req.body.username,
+        password: hashedPassword,
+      }).save((err) => {
         if (err) {
           return next(err);
         }
-        // otherwise, store hashedPassword in DB
-        new User({
-          username: req.body.username,
-          password: hashedPassword,
-        }).save((err) => {
-          if (err) {
-            return next(err);
-          }
-          // res.redirect('/');
-          res.render('sign-up', {
-            successMsg: 'Signed up sucessfully.',
-          });
+        // res.redirect('/');
+        res.render('sign-up', {
+          successMsg: 'Signed up sucessfully.',
         });
       });
-    }
+    });
   },
 ];
 

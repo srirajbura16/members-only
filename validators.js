@@ -5,29 +5,28 @@ exports.signup_validators = [
     .exists()
     .trim()
     .isLength({ min: 3 })
-    .withMessage('User name must be three or more characters.')
-    .custom((username) => {
-      User.find({ username: username }, (err, user) => {
-        if (user) {
-          return false;
-        }
-        return true;
-      });
-    })
-    .withMessage('Username is already taken')
-    .bail(),
+    .withMessage('Username must be three or more characters.'),
+  // .custom((value) => {
+  //   User.findOne({ username: value }, (err, user) => {
+  //     console.log(value, user);
+  //     if (user) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  // })
+  // .withMessage('username already exists'),
   body('password', 'Password name must be three or more characters.')
     .exists()
     .isLength({ min: 3 })
     .bail(),
-  body('confirm-password')
+  body('confirm-password', "Passwords don't match.")
     .exists()
     .custom((value, { req }) => {
       if (value !== req.body.password) {
-        return false;
-      } else {
-        return true;
+        throw new Error('Password confirmation does not match password');
       }
-    })
-    .withMessage('Passwords must match'),
+      return true;
+    }),
 ];
