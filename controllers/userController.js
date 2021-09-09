@@ -5,25 +5,8 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 const { body, validationResult } = require('express-validator');
+const { checkAuthentication, checkUsernameTaken } = require('../helpers');
 
-const checkAuthentication = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-};
-
-const checkUsernameTaken = (req, res, next) => {
-  User.findOne({ username: req.body.username }).exec((err, user) => {
-    if (user) {
-      res.render('sign-up', { errors: [{ msg: 'Username already taken' }] });
-      return;
-    } else {
-      next();
-    }
-  });
-};
 // Login User
 exports.login_get = (req, res) => {
   res.render('login');
@@ -80,43 +63,55 @@ exports.signup_post = [
 ];
 
 //Membership access
-exports.membership_get = (req, res) => {
-  res.render('membership');
-};
+exports.membership_get = [
+  checkAuthentication,
+  (req, res) => {
+    res.render('membership');
+  },
+];
 
-exports.membership_post = (req, res) => {
-  const user = req.user;
-  if (req.body.code !== process.env.member_code) {
-    res.render('membership', { error: 'Wrong code, please try again.' });
-  } else {
-    //change user status to member
-    //display success message.
-    User.findByIdAndUpdate(user._id, { member: true }, (err) => {
-      console.log(result);
-      if (err) {
-        return next(err);
-      }
-      res.render('membership', { successMsg: "You're a member now!" });
-    });
-  }
-};
+exports.membership_post = [
+  checkAuthentication,
+  (req, res) => {
+    const user = req.user;
+    if (req.body.code !== process.env.member_code) {
+      res.render('membership', { error: 'Wrong code, please try again.' });
+    } else {
+      //change user status to member
+      //display success message.
+      User.findByIdAndUpdate(user._id, { member: true }, (err) => {
+        console.log(result);
+        if (err) {
+          return next(err);
+        }
+        res.render('membership', { successMsg: "You're a member now!" });
+      });
+    }
+  },
+];
 
 //Admin Access
-exports.admin_get = (req, res) => {
-  res.render('admin');
-};
-exports.admin_post = (req, res) => {
-  const user = req.user;
-  if (req.body.code !== process.env.admin_code) {
-    res.render('admin', { error: 'Wrong code, please try again.' });
-  } else {
-    //change user status to admin
-    //display success message.
-    User.findByIdAndUpdate(user._id, { admin: true }, (err) => {
-      if (err) {
-        return next(err);
-      }
-      res.render('admin', { successMsg: "You're an Admin now!" });
-    });
-  }
-};
+exports.admin_get = [
+  checkAuthentication,
+  (req, res) => {
+    res.render('admin');
+  },
+];
+exports.admin_post = [
+  checkAuthentication,
+  (req, res) => {
+    const user = req.user;
+    if (req.body.code !== process.env.admin_code) {
+      res.render('admin', { error: 'Wrong code, please try again.' });
+    } else {
+      //change user status to admin
+      //display success message.
+      User.findByIdAndUpdate(user._id, { admin: true }, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.render('admin', { successMsg: "You're an Admin now!" });
+      });
+    }
+  },
+];
