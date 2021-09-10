@@ -12,6 +12,7 @@ require('dotenv').config();
 const User = require('./models/user');
 
 var indexRouter = require('./routes/index');
+var postRouter = require('./routes/post');
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
@@ -79,6 +80,7 @@ app.use((req, res, next) => {
 
 //Set up Routes
 app.use('/', indexRouter);
+app.use('/post', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

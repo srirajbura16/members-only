@@ -1,15 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-//helpers
-const checkAuthentication = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-};
-
 //Controller Modules
 const post_controller = require('../controllers/postController');
 const user_controller = require('../controllers/userController');
@@ -28,19 +19,15 @@ router.get('/logout', user_controller.logout_post);
 
 //After login
 //post
-router.get('/post', checkAuthentication, post_controller.post_create_get);
-router.post('/post', checkAuthentication, post_controller.post_create_post);
+router.get('/post', post_controller.post_create_get);
+router.post('/post', post_controller.post_create_post);
 
 //member
-router.get('/membership', checkAuthentication, user_controller.membership_get);
-router.post(
-  '/membership',
-  checkAuthentication,
-  user_controller.membership_post
-);
+router.get('/membership', user_controller.membership_get);
+router.post('/membership', user_controller.membership_post);
 
 //admin
-router.get('/admin', checkAuthentication, user_controller.admin_get);
-router.post('/admin', checkAuthentication, user_controller.admin_post);
+router.get('/admin', user_controller.admin_get);
+router.post('/admin', user_controller.admin_post);
 
 module.exports = router;
