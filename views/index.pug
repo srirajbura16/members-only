@@ -7,6 +7,7 @@ block content
   each post in posts
     div.post
       div.post-info
+        span=post.url
         span Posted by  
         if !currentUser
           span
@@ -17,6 +18,10 @@ block content
         else
           span
             a(href="/membership") Anonymous
-
-      h4.title=post.title
-      p.message=post.message
+      div.post-details
+        div.post-details-admin
+          h4.title=post.title
+          if currentUser && currentUser.admin
+            a.delete-btn(href=post.url+'/delete')
+              i.bi.bi-trash.fa-4x
+        p.message=post.message

@@ -10,10 +10,15 @@ exports.posts = (req, res, next) => {
         return next(err);
       }
 
+      console.log(posts);
+
       res.render('index', { posts: posts, formatDistanceToNow });
     });
 };
 
+exports.post_get = [];
+
+//Create Post
 exports.post_create_get = [
   checkAuthentication,
   (req, res, next) => {
@@ -37,3 +42,13 @@ exports.post_create_post = [
     });
   },
 ];
+
+//Delete Post
+exports.post_delete_get = [
+  checkAuthentication,
+  (req, res, next) => {
+    res.render('post_delete');
+  },
+];
+
+exports.post_delete_post = [];

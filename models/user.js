@@ -10,7 +10,7 @@ const UserSchema = new Schema({
 });
 
 //User URL
-UserSchema.virtual('url').get(() => {
+UserSchema.virtual('url').get(function () {
   return '/user/' + this.username;
 });
 

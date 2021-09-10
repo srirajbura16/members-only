@@ -42,8 +42,29 @@ a {
   cursor: pointer;
 }
 
+.post-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .post .title {
   font-weight: bold;
+}
+
+.post-details-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-btn {
+  font-size: 1.3rem;
+  color: black;
+}
+
+.delete-btn:hover {
+  color: red;
 }
 
 /* ERROR MESSAGES */
