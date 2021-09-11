@@ -1,5 +1,4 @@
 const { body } = require('express-validator');
-const User = require('./models/user');
 exports.signup_validators = [
   body('username')
     .exists()

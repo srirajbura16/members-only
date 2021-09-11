@@ -80,7 +80,6 @@ exports.membership_post = [
       //change user status to member
       //display success message.
       User.findByIdAndUpdate(user._id, { member: true }, (err) => {
-        console.log(result);
         if (err) {
           return next(err);
         }

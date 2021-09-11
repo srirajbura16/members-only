@@ -10,8 +10,6 @@ exports.posts = (req, res, next) => {
         return next(err);
       }
 
-      console.log(posts);
-
       res.render('index', { posts: posts, formatDistanceToNow });
     });
 };
