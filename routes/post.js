@@ -8,6 +8,6 @@ const post_controller = require('../controllers/postController');
 
 // //delete post
 router.get('/:id/delete', post_controller.post_delete_get);
-// router.post(':id/delete', post_controller.post_delete_post);
+router.post('/:id/delete', post_controller.post_delete_post);
 
 module.exports = router;

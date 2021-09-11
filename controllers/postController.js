@@ -49,4 +49,16 @@ exports.post_delete_get = [
   },
 ];
 
-exports.post_delete_post = [];
+exports.post_delete_post = [
+  checkAuthentication,
+  (req, res, next) => {
+    Post.findByIdAndRemove(req.params.id, (err) => {
+      console.log(req.params.id);
+      if (err) {
+        return next(err);
+      }
+
+      res.redirect('/');
+    });
+  },
+];

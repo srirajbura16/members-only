@@ -72,6 +72,13 @@ a {
   margin-top: 1rem;
 }
 
+/* DELETE POST CONFIRMATION */
+.delete-confirmation {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
 /* FOOTER */
 footer {
   display: -webkit-box;

@@ -96,6 +96,7 @@ exports.admin_get = [
     res.render('admin');
   },
 ];
+
 exports.admin_post = [
   checkAuthentication,
   (req, res) => {
