@@ -4,7 +4,7 @@ Members-Only is an exclusive clubhouse where members can write anonymous posts. 
 
 **In this project, I learned to:**
 
-- authenticate users securely using [bcryptjs](https://github.com/dcodeIO/bcrypt.js/).
+- authenticate users securely using [Passpostjs](http://www.passportjs.org/) and [bcryptjs](https://github.com/dcodeIO/bcrypt.js/).
 - Implement and show errors when something goes wrong. (e.g., passwords don't match when signing up)
 - Create middleware to check if a user is authenticated.
 
