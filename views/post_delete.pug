@@ -6,9 +6,9 @@ block content
     h3.text-danger ACCESS DENIED
   else
     form(method='POST' action="")
-      div.form-group
-        h1(for='username') Are you sure you want to delete this post?
-      
-      div.delete-confirmation 
-        button.btn.btn-danger(type='submit') Delete
-        a.btn.btn-light(role="button", href="/") Cancel
+      div.delete-confirmation
+        div
+          h1 Are you sure you want to delete this post?
+        div
+          button.btn.btn-danger(type='submit') Delete
+          a.btn.btn-light(role="button", href="/") Cancel

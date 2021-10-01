@@ -1,5 +1,5 @@
 body {
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font: 20px 'Lucida Grande', Helvetica, Arial, sans-serif;
   background-color: #dae0e6;
 }
 
@@ -25,7 +25,8 @@ a {
 }
 
 .block-content {
-  max-width: 900px;
+  /* max-width: 900px; */
+  max-width: 1200px;
   padding: 0 3rem;
   margin: 2rem auto;
 }
@@ -50,6 +51,7 @@ a {
 
 .post .title {
   font-weight: bold;
+  font-size: 2rem;
 }
 
 .post-details-admin {
@@ -59,7 +61,7 @@ a {
 }
 
 .delete-btn {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: black;
 }
 
@@ -75,7 +77,9 @@ a {
 /* DELETE POST CONFIRMATION */
 .delete-confirmation {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 2rem;
 }
 
@@ -87,6 +91,7 @@ footer {
   -ms-flex-align: center;
   display: flex;
   justify-content: space-evenly;
+  font-size: 1.5rem;
   align-items: center;
   position: fixed;
   bottom: 0;
