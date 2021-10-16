@@ -14,7 +14,7 @@ exports.posts = (req, res, next) => {
     });
 };
 
-exports.post_get = [];
+// exports.post_get = [];
 
 //Create Post
 exports.post_create_get = [
