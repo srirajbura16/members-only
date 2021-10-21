@@ -13,35 +13,35 @@ exports.login_get = (req, res) => {
   res.render('login');
 };
 
-// exports.login_post = (req, res) => {
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/',
-//   })(req, res);
-// };
-
 exports.login_post = (req, res) => {
-  passport.authenticate('local', { session: false }, (err, user, info) => {
-    // console.log('hihihihi', user);
-    if (err || !user) {
-      return res
-        .status(400)
-        .render('login', { msg: 'Login failed. Please try again.' });
-    }
-
-    req.login(user, { session: false }, (err) => {
-      if (err) {
-        res.send(err);
-      }
-
-      // generate a signed son web token with the contents of user object and return it in the response
-
-      const token = jwt.sign(user.toJSON(), process.env.JWT_SECRET);
-      // res.header('Authorization', 'Bearer ' + token);
-      return res.render('login', { msg: 'Logged in successfully.', token });
-    });
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/',
   })(req, res);
 };
+
+// JWT Strategy
+// exports.login_post = (req, res) => {
+//   passport.authenticate('local', { session: false }, (err, user) => {
+//     if (err || !user) {
+//       return res
+//         .status(400)
+//         .render('login', { msg: 'Login failed. Please try again.' });
+//     }
+
+//     req.login(user, { session: false }, (err) => {
+//       if (err) {
+//         res.send(err);
+//       }
+
+//       // generate a signed son web token with the contents of user object and return it in the response
+
+//       const token = jwt.sign(user.toJSON(), process.env.JWT_SECRET);
+//       // res.header('Authorization', 'Bearer ' + token);
+//       return res.render('login', { msg: 'Logged in successfully.', token });
+//     });
+//   })(req, res);
+// };
 
 exports.logout_post = (req, res) => {
   req.logout();
