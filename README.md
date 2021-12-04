@@ -30,4 +30,4 @@ To run this project, you will also need to add the following environment variabl
 ## Features
 
 - User Authentication
-- Become Member and admin
+- Become Member and Admin
