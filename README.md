@@ -16,7 +16,7 @@ see the story and wonder who wrote it.
 To run this project, you will also need to add the following environment variable to your 
 .env file 
 
-`DB_HOST`
+`DB_HOST` - MongoDB Connection String URI
 
 
 
